@@ -9,8 +9,16 @@ export class AuthService {
       private http: HttpClient
   ) {}
 
+  public login(email: string, password: string): Observable<any> {
+    return this.http.post('//localhost:12000/login', {email, password});
+  }
+
   public refresh(): Observable<any>  {
-    return this.http.post('//localhost:12000/refresh', {});
+    let headers: HttpHeaders = new HttpHeaders();
+    headers = headers.set('X-Refresh-Token', this.getCookie('es_cli_ref'));
+    headers = headers.set('Authorization', `Bearer ${this.getCookie('es_cli_jwt')}`);
+
+    return this.http.post('//localhost:12000/refresh', {}, {headers});
   }
 
   public getCookie(name: string) {
@@ -32,11 +40,10 @@ export class AuthService {
     }
 
     // Got nothing, return false
-    return false;
+    return null;
   }
 
   public setCookie(name: string, value: string) {
     document.cookie = name + '=' + value + ';path=/';
-    console.log(this.getCookie('es_cli_jwt'));
   }
 }

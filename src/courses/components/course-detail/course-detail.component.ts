@@ -29,8 +29,6 @@ export class CourseDetailComponent implements OnInit {
     } else {
       this.course = course;
     }
-
-    console.log('on init reached', this.course);
   }
 
 }
