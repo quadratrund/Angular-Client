@@ -7,10 +7,14 @@ import { AppComponent } from './app.component';
 import { CoursesModule } from '../courses/courses.module';
 import { FormsModule } from '@angular/forms';
 import { AuthModule } from '../auth/auth.module';
+import { LandingComponent } from './components/landing/landing.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LandingComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
