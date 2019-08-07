@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Course } from '../models/course.model';
+import { pluck } from 'rxjs/operators';
 
 @Injectable()
 export class CourseService {
@@ -15,11 +16,15 @@ export class CourseService {
   ) { }
 
   public getCourseList(): Observable<any> {
-    return this.http.get('//localhost:12000/courses');
+    return this.http.get('//localhost:5000/api/courses').pipe(
+      pluck('data')
+    );
   }
 
   public getCourse(id: number): Observable<any> {
-    return this.http.get('//localhost:12000/courses/' + id);
+    return this.http.get('//localhost:5000/api/courses/' + id).pipe(
+      pluck('data')
+    );
   }
 
   public getRouteStorage(): Course {

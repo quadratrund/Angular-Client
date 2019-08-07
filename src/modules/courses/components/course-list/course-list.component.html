@@ -14,6 +14,14 @@
           </div>
         </div>
       </div>
+      <div class="col-sm-12 d-flex align-items-center justify-content-center" *ngIf="!courses.length && !loading">
+        <div class="card mt-2">
+          <div class="card-body">
+            <h5 class="card-title">No Results</h5>
+            <p class="card-text">We might be having a slight hiccup, try again in a minute</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
