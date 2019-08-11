@@ -10,6 +10,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CourseDetailComponent implements OnInit {
 
+  public activeTab: string = 'description';
+
   @Input() course: Course;
 
   constructor(
@@ -21,7 +23,7 @@ export class CourseDetailComponent implements OnInit {
     const course: Course = this.courseService.getRouteStorage();
 
     if (!course) {
-      const id = Number(this.route.snapshot.paramMap.get('id'));
+      const id = String(this.route.snapshot.paramMap.get('id'));
       this.courseService.getCourse(id).subscribe(
         data => this.course = data,
           err => console.error(err)
@@ -29,6 +31,11 @@ export class CourseDetailComponent implements OnInit {
     } else {
       this.course = course;
     }
+  }
+
+  changeTab(tabName: string) {
+    console.log('changeTab called');
+    this.activeTab = tabName;
   }
 
 }

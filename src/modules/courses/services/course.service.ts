@@ -21,7 +21,7 @@ export class CourseService {
     );
   }
 
-  public getCourse(id: number): Observable<any> {
+  public getCourse(id: any): Observable<any> {
     return this.http.get('//localhost:5000/api/courses/' + id).pipe(
       pluck('data')
     );

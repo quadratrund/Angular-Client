@@ -1,0 +1,26 @@
+.navbar {
+  background: linear-gradient(#2082DD, #1864AA);
+  color: #FFF;
+
+  .nav-item.active {
+    a.nav-link {   
+      font-weight: bold;
+      color: #DD2052;
+    }
+  }
+
+  a.nav-link {
+    color: white;
+    transition: all 0.2s ease;
+  }
+
+  a.navbar-brand {
+    color: white;
+  }
+}
+
+.card {
+  .card-footer {
+    background: transparent;
+  }
+}

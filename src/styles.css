@@ -5,7 +5,7 @@ html, body {
   min-height: 100vh;
   height: auto;
   margin: 0;
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: 'IBM Plex Sans', sans-serif !important;
 }
 
 body {
@@ -15,4 +15,13 @@ body {
 
 app-root {
     height: 100%;
+}
+
+.btn {
+  border-radius: 0 !important;
+  padding: 12px 6px;
+}
+
+.ws-pre-line {
+  white-space: pre-line !important;
 }
