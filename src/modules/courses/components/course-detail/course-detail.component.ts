@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Course } from '../../models/course.model';
 import { CourseService } from '../../services/course.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LessonService } from '../../services/lesson.service';
 
 @Component({
   selector: 'app-course-detail',
@@ -16,7 +17,9 @@ export class CourseDetailComponent implements OnInit {
 
   constructor(
       private courseService: CourseService,
-      private route: ActivatedRoute
+      private lessonService: LessonService,
+      private route: ActivatedRoute,
+      private router: Router
   ) { }
 
   ngOnInit() {
@@ -34,8 +37,12 @@ export class CourseDetailComponent implements OnInit {
   }
 
   changeTab(tabName: string) {
-    console.log('changeTab called');
     this.activeTab = tabName;
   }
 
+  openPlayer(lesson: any) {
+    this.courseService.setRouteStorage(this.course);
+    this.lessonService.setRouteStorage(lesson);
+    this.router.navigate(['/', 'courses', this.course.id, 'lesson', lesson.id]);
+  }
 }

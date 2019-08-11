@@ -28,7 +28,8 @@ export class CourseListComponent implements OnInit {
     );
   }
 
-  public openCourse(course: Course) {
+  public openCourse(course: any) {
+    console.log(course);
     this.courseService.setRouteStorage(course);
     this.router.navigate(['courses', course.id]);
   }

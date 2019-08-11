@@ -11,6 +11,8 @@ export class AppComponent {
   public showNav: boolean;
 
   constructor(private router: Router) {
+    this.showNav = true;
+    
     router.events.subscribe(
         () => this.showNav = router.url !== '/'
     );

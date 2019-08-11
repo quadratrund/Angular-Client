@@ -7,7 +7,7 @@ import { pluck } from 'rxjs/operators';
 @Injectable()
 export class CourseService {
 
-  private routeStorage: Course;
+  private routeStorage: any;
 
   // @todo - add caching support via HttpClientCache
 
@@ -27,11 +27,11 @@ export class CourseService {
     );
   }
 
-  public getRouteStorage(): Course {
+  public getRouteStorage(): any {
     return this.routeStorage;
   }
 
-  public setRouteStorage(course: Course): void {
+  public setRouteStorage(course: any): void {
     this.routeStorage = course;
   }
 }
