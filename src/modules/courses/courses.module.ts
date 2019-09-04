@@ -6,7 +6,6 @@ import { CourseListComponent } from './components/course-list/course-list.compon
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CourseService } from './services/course.service';
 import { LessonService } from './services/lesson.service';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from '../shared/shared.module';
 import { CourseDetailComponent } from './components/course-detail/course-detail.component';
 import { AuthInterceptor } from '../shared/interceptors/auth.interceptor';
@@ -18,8 +17,7 @@ import { CoursePlayerComponent } from './components/course-player/course-player.
     CommonModule,
     HttpClientModule,
     CoursesRoutingModule,
-    SharedModule,
-    NgbModule
+    SharedModule
   ],
   providers: [
       CourseService,
