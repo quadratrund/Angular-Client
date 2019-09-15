@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { pluck } from 'rxjs/operators';
 
 @Injectable()
 export class AuthService {
@@ -10,19 +11,33 @@ export class AuthService {
   ) {}
 
   public login(email: string, password: string): Observable<any> {
-    return this.http.post('//localhost:5000/api/auth/login', {email, password});
+    return this.http.post('//localhost:5000/api/auth/login', {email, password}).pipe(
+      pluck('data')
+    );
   }
 
   public refresh(): Observable<any>  {
-    let headers: HttpHeaders = new HttpHeaders();
-    headers = headers.set('X-Refresh-Token', this.getCookie('es_cli_ref'));
-    headers = headers.set('Authorization', `Bearer ${this.getCookie('es_cli_jwt')}`);
-
-    return this.http.post('//localhost:5000/refresh', {}, {headers});
+    return this.http.post('//localhost:5000/api/auth/refresh', {Code: this.getRefreshToken()});
   }
 
   public register(email: string, password: string, username: string): Observable<any> {
     return this.http.post('//localhost:5000/api/users', {email, password, username});
+  }
+
+  public getAccessToken() {
+    return localStorage.getItem('es_cli_jwt') || false;
+  }
+
+  public getRefreshToken() {
+    return localStorage.getItem('es_cli_ref') || false;
+  }
+
+  public setAccessToken(accessToken: string) {
+    localStorage.setItem('es_cli_jwt', accessToken);
+  }
+
+  public setRefreshToken(refreshToken: string) {
+    localStorage.setItem('es_cli_ref', refreshToken);
   }
 
   public getCookie(name: string) {
