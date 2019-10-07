@@ -60,7 +60,9 @@
 
         &.grid {
             flex: 0.33;
-            flex-direction: column;    
+            flex-direction: column;
+            min-width: 250px;
+            max-width: 340px;
         }
 
         &.list {
@@ -69,7 +71,7 @@
 
             .course-card--image {
                 display: block;
-                max-width: 10%;
+                height: 110px;
                 margin-right: 25px; 
             }
         }
@@ -86,6 +88,49 @@
 
         .course-card--teaser {
             line-height: 1.4em;
+        }
+    }
+}
+
+@media (max-width: 1099px) {
+    .content--list-contents {
+        .list-contents--course-card.grid {
+            flex: 1;
+            min-width: calc(33.3% - 12px);
+            max-width: calc(33.3% - 12px);
+        }
+    }
+}
+
+@media (max-width: 959px) {
+    .container {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 819px) {
+    .content--list-contents {
+        .list-contents--course-card.grid {
+            min-width: calc(50% - 12px);
+            max-width: calc(50% - 12px);
+        }
+    }
+}
+
+@media (max-width: 549px) {
+    .content--list-contents {
+        .list-contents--course-card.grid {
+            min-width: 100%;
+            max-width: 100%;
+        }
+
+        .list-contents--course-card.list {
+            display: block;
+
+            .course-card--image {
+                height: 50px;
+                float: left;
+            }
         }
     }
 }
