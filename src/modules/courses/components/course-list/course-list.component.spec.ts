@@ -1,5 +1,9 @@
+import { HttpClientModule } from '@angular/common/http';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterModule } from '@angular/router';
 
+import { TagsFilterComponent } from '../../../shared/components/tags-filter/tags-filter.component';
+import { CourseService } from '../../services/course.service';
 import { CourseListComponent } from './course-list.component';
 
 describe('CourseListComponent', () => {
@@ -8,7 +12,9 @@ describe('CourseListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CourseListComponent ]
+      declarations: [ CourseListComponent, TagsFilterComponent ],
+      imports: [ HttpClientModule, RouterModule.forRoot([]) ],
+      providers: [ CourseService ]
     })
     .compileComponents();
   }));

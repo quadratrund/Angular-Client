@@ -1,5 +1,9 @@
+import { HttpClientModule } from '@angular/common/http';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 
+import { CoursesModule } from '../../../courses/courses.module';
+import { NotebookService } from '../../services/notebook.service';
 import { NotebookFormComponent } from './notebook-form.component';
 
 describe('NotebookFormComponent', () => {
@@ -8,7 +12,9 @@ describe('NotebookFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NotebookFormComponent ]
+      declarations: [ NotebookFormComponent ],
+      imports: [ FormsModule, HttpClientModule, CoursesModule ],
+      providers: [ NotebookService ]
     })
     .compileComponents();
   }));

@@ -1,5 +1,10 @@
+import { HttpClientModule } from '@angular/common/http';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { BrowserModule } from '@angular/platform-browser';
 
+import { AuthModule } from '../../../modules/auth/auth.module';
+import { SharedModule } from '../../../modules/shared/shared.module';
+import { AppRoutingModule } from '../../app-routing.module';
 import { LandingComponent } from './landing.component';
 
 describe('LandingComponent', () => {
@@ -8,7 +13,14 @@ describe('LandingComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LandingComponent ]
+      declarations: [ LandingComponent ],
+      imports: [
+        AppRoutingModule,
+        BrowserModule,
+        AuthModule,
+        SharedModule,
+        HttpClientModule
+      ]
     })
     .compileComponents();
   }));
